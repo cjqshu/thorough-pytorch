@@ -872,14 +872,13 @@ title="Print to PDF"
 <section id="overall-accuracy">
 <h2>Overall Accuracy<a class="headerlink" href="#overall-accuracy" title="永久链接至标题">#</a></h2>
 <p>Overall Accuracy代表了所有预测正确的样本占所有预测样本总数的比例，结合上述例子，我们可以用下述公式表示：
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 \rm{OA} =\frac{\rm{TP+TN}}{\rm{TP+TN+FP+FN}} = \frac{N_{correct}}{N_{total}}
-\)</span><span class="math notranslate nohighlight">\(
-这里的分类正确代表了正样本被正确分类为正样本，负样本正确分类为负样本。准确率是描述模型最简单的指标，Acc的缺点主要在于假如说我们举得例子，在样本中，核酸结果成阴性占据了模型98%，
-假如说模型不调试分类，我只要一直判断核酸结果呈阴性，那我们的模型最终效果可能会更好，但是实际上模型的效率以及准确率都是非常低下的。当我们的样本正负样本极端不平衡时Acc这个评价指标其实是没有意义的。我们再回到上面的例子中，可以计算在该例子中Acc = 0.96.
-\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">
+<p>这里的分类正确代表了正样本被正确分类为正样本，负样本正确分类为负样本。准确率是描述模型最简单的指标，Acc的缺点主要在于假如说我们举得例子，在样本中，核酸结果成阴性占据了模型98%，假如说模型不调试分类，我只要一直判断核酸结果呈阴性，那我们的模型最终效果可能会更好，但是实际上模型的效率以及准确率都是非常低下的。当我们的样本正负样本极端不平衡时Acc这个评价指标其实是没有意义的。我们再回到上面的例子中，可以计算在该例子中Acc = 0.96.</p>
+</span><span class="math notranslate nohighlight">\(
 OA=\frac{\rm{TP+TN}}{100}= \frac{96}{100}= 0.96
-\)</span>$</p>
+\)</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_oa</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    计算总体准确率,OA=(TP+TN)/(TP+TN+FP+FN)</span>
@@ -906,11 +905,11 @@ OA=\frac{\rm{TP+TN}}{100}= \frac{96}{100}= 0.96
 <section id="kappa">
 <h2>Kappa系数<a class="headerlink" href="#kappa" title="永久链接至标题">#</a></h2>
 <p>Kappa系数是一个用于一致性检验的指标，也可以用于衡量分类的效果。对于分类问题而言，一致性就是模型预测结果和实际分类结果是否一致。kappa系数的计算同样也是基于混淆矩阵进行计算，取值为-1到1之间,通常大于0。我们可以使用下述公式进行计算：
-$<span class="math notranslate nohighlight">\(
+<span class="math notranslate nohighlight">\(
 kappa = \frac{p_o-p_e}{1-p_e}\\
 p_o = OA\\
 p_e = \frac{\sum_{i} (x_i \cdot x_j)}{(\sum_{j=0}^n\sum_{i=0}^{n} x_{ij})^2}
-\)</span>$</p>
+\)</span></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">compute_kappa</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    计算kappa系数</span>
